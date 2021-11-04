@@ -4,6 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
         QuadEquation quadEq;
+        //опишем лямбда-выражение для поиска корней
         quadEq = (double a, double b, double c) -> {
             double d = b*b - 4*a*c; // дискриминант
 
@@ -17,6 +18,7 @@ public class Main {
             else
                 return null;
         };
+        //решим конкретное уравнение
         SolutionQuadEquation roots = quadEq.solve(1,-5,1);
         if (roots==null)
         System.out.println("Корней нет");
@@ -27,9 +29,12 @@ public class Main {
         }
     }
 }
+//объявим функциональный интерфейс
+@FunctionalInterface
 interface QuadEquation{
     SolutionQuadEquation solve(double a, double b, double c);
 }
+//решение квадратного уравнения - пара чисел
 class SolutionQuadEquation{
     double x1;
     double x2;
